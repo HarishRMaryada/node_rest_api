@@ -1,22 +1,15 @@
-const getProductv1 = (req, res) => {
-  res.send(`Random req`);
-};
-
-const getProductv1ID = (req, res) => {
-  console.log(req.params.id);
-  res.send(`Random Product from V1 Products`);
-};
+const products = require("./products");
 
 let array = [
   {
     method: "get",
     path: "/",
-    controller: getProductv1,
+    controller: products.get,
   },
   {
     method: "get",
     path: "/:id",
-    controller: getProductv1ID,
+    controller: products.getById,
   },
 ];
 module.exports = array;

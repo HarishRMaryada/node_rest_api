@@ -9,7 +9,7 @@ const userPackage = grpcObj.userPackage;
 
 const server = new grpc.Server();
 server.bind("0.0.0.0:50051", grpc.ServerCredentials.createInsecure()); //need to config
-let products = []
+let products = [{ _id: "product 1", name: "myproduct", price: 23 }]
 function create(call, callback) {
   products.push(call.request)
   callback(null, { _id: "product 1", name: "myproduct", price: 20 }); //resJson must match with proto
