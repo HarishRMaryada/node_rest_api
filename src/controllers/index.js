@@ -10,18 +10,6 @@ const getDirectories = (source) =>
     .filter(isDirectory);
 
 const controllers = (app) => {
-  app
-    .route("/book")
-    .get(function (req, res) {
-      res.send("Get a random book");
-    })
-    .post(function (req, res) {
-      res.send("Add a book");
-    })
-    .put(function (req, res) {
-      res.send("Update the book");
-    });
-
   let dirArray = getDirectories("src/controllers");
   if (dirArray && dirArray.length > 0) {
     dirArray.forEach((element) => {
