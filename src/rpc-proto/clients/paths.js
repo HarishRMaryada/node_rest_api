@@ -1,4 +1,3 @@
-const path = require("path");
-const PRODUCTS_PROTO = path.resolve("./src") + "/protos/products.proto";
-const USERS_PROTO = path.resolve("./src") + "/protos/users.proto";
+const PRODUCTS_PROTO = __dirname + "/../protos/products.proto";
+const USERS_PROTO = __dirname + "/../protos/users.proto";
 module.exports = [PRODUCTS_PROTO, USERS_PROTO];
