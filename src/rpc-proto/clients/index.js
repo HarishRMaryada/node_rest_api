@@ -7,7 +7,7 @@ const productPackage = grpcObj.productPackage;
 const userPackage = grpcObj.userPackage;
 
 const productClient = new productPackage.Product(
-    "localhost:50051",
+    "localhost:50055",
     grpc.credentials.createInsecure()
 );
 
