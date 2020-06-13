@@ -1,11 +1,10 @@
 const { grpcClients } = require("src/rpc-proto");
 
-const get = (req, res) => {
-  grpcClients.productClient.list({},(err, response) => {
-   console.log(err)
-   if (err) res.send("ERROR");
-    res.send(response);
-  });
+const get = async (req, res, next) => {
+    await grpcClients.productClient.list({}, (err, response) => {
+      if(err) next(err)
+      res.send(response);
+    });
 };
 
 const getById = (req, res) => {
@@ -13,11 +12,18 @@ const getById = (req, res) => {
   res.send(`Random Product from V1 Products`);
 };
 
-// const create = (req, res) => {
-//   grpcClients.productClient.list({},(err, response) => {
-//    console.log(err)
-//    console.log(response)
-//     res.send(response);
-//   });
-// };
-module.exports = { get, getById };
+const create = (req, res) => {
+  try {
+    let product = {
+      name: "myproduct",
+      price: 20,
+    };
+    grpcClients.productClient.create(product, (err, response) => {
+      res.send(response);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+module.exports = { get, getById, create };

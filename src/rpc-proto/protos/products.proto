@@ -3,26 +3,28 @@ syntax = "proto3";
 package productPackage;
 
 service Product {
-    rpc create(reqProduct) returns (resProduct);
-    rpc list(reqVoid) returns (resProducts);
-    rpc listStream(reqVoid) returns (stream resProduct); //stream of product
+    rpc create(ProductRequest) returns (ProductResponse);
+    rpc list(VoidRequest) returns (ProductsResponse);
+    rpc listStream(VoidRequest) returns (stream ProductResponse); //stream of product
 }
-message reqVoid {
+message VoidRequest {
 
 }
 
-message reqProduct {
-    string _id =1;
-    string name =2;
-    int32 price =3;
+message ProductRequest {
+    string _id = 1;
+    string name = 2;
+    int32 price = 3;
 }
 
-message resProduct {
-    string name = 1;
+message ProductResponse {
+    string _id = 1;
+    string name = 2;
+    int32 price = 3;
 }
 
-message resProducts {
-    repeated resProduct results = 1;
+message ProductsResponse {
+    repeated ProductResponse results = 1;
 }
 
 

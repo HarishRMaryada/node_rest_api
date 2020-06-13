@@ -8,15 +8,15 @@ const getUserbyId = (req, res) => {
 };
 
 let array = [
-  {
-    method: "get",
-    path: "/",
-    controller: getUser,
-  },
-  {
-    method: "get",
-    path: "/:id",
-    controller: getUserbyId,
-  },
+  // {
+  //   method: "get",
+  //   path: "/",
+  //   controller: getUser,
+  // },
+  // {
+  //   method: "get",
+  //   path: "/:id",
+  //   controller: getUserbyId,
+  // },
 ];
 module.exports = array;

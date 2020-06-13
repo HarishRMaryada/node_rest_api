@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 const { lstatSync, readdirSync } = require("fs");
 const { join } = require("path");
+const tryCatch = require("../middleware/tryCatch");
 
 const isDirectory = (source) => lstatSync(source).isDirectory();
 const getDirectories = (source) =>
@@ -22,7 +23,7 @@ const controllers = (app) => {
             path = path.replace("/src/controllers", "");
             switch (route.method) {
               case "get":
-                app.route(path).get(route.controller);
+                app.route(path).get(tryCatch(route.controller));
               case "post":
                 app.route(path).post(route.controller);
               case "put":
