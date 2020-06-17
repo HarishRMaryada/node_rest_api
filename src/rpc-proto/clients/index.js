@@ -5,6 +5,7 @@ const packageDefinition = protoLoader.loadSync(paths, {});
 const grpcObj = grpc.loadPackageDefinition(packageDefinition);
 const productPackage = grpcObj.productPackage;
 const userPackage = grpcObj.userPackage;
+const tokenPackage = grpcObj.tokenPackage;
 
 const productClient = new productPackage.Product(
     "localhost:50055",
@@ -16,4 +17,9 @@ const userClient = new userPackage.User(
     grpc.credentials.createInsecure()
 );
 
-module.exports = { productClient,userClient };
+const tokenClient = new tokenPackage.Token(
+    "localhost:50055",
+    grpc.credentials.createInsecure()
+)
+
+module.exports = { productClient,userClient,tokenClient };
