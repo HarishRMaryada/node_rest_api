@@ -11,4 +11,9 @@ const productClient = new productPackage.Product(
     grpc.credentials.createInsecure()
 );
 
-module.exports = { productClient };
+const userClient = new userPackage.User(
+    "localhost:50055",
+    grpc.credentials.createInsecure()
+);
+
+module.exports = { productClient,userClient };

@@ -1,18 +1,12 @@
-const getUser = (req, res) => {
-  res.send(`Random req`);
-};
+const {list} = require("./users")
 
-const getUserbyId = (req, res) => {
-  console.log(req.params.id);
-  res.send(`Random`);
-};
 
 let array = [
-  // {
-  //   method: "get",
-  //   path: "/",
-  //   controller: getUser,
-  // },
+  {
+    method: "get",
+    path: "/",
+    controller: list,
+  },
   // {
   //   method: "get",
   //   path: "/:id",
